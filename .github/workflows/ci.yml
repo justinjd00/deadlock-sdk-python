@@ -62,7 +62,7 @@ jobs:
       - name: Install the wheel without dev dependencies and smoke test it
         run: |
           uv venv /tmp/smoke --python 3.10
-          VIRTUAL_ENV=/tmp/smoke uv pip install dist/*.whl
+          uv pip install --python /tmp/smoke/bin/python dist/*.whl
           cd /tmp
           /tmp/smoke/bin/python -c "import deadlock_sdk, deadlock_sdk.types; print(deadlock_sdk.__version__)"
           /tmp/smoke/bin/deadlock-py --version
